@@ -44,6 +44,37 @@ app.delete('/customers/:id', function(req, res) {
     res.json(data);
 });
 
+app.post('/addCustomer', function(req, res) {
+    var request = req.query;
+    var customerName = request.name;
+    var customerCity = request.city;
+    var len = customers.length;
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    if (month < 10) {
+        month = '0' + month;
+    }
+    var day = date.getDate();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    customers.push({
+        id: len,
+        joined: `${year}-${month}-${day}`,
+        name: customerName,
+        city: customerCity,
+        orders: [{
+                id: null,
+                product: '',
+                total: 0
+            }
+
+        ]
+
+    })
+});
+
 app.listen(8080);
 
 console.log('Express listening on port 8080');

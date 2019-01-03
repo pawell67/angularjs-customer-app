@@ -13,11 +13,15 @@
 
         factory.getOrders = function() {
             return $http.get('/orders');
-        }
+        };
 
         factory.deleteCustomer = function(customerId) {
             return $http.delete('/customers/' + customerId);
-        }
+        };
+
+        factory.addCustomer = function(customer) {
+            return $http({ url: '/addCustomer', params: { name: customer.name, city: customer.city }, method: 'POST' });
+        };
 
         return factory;
     };

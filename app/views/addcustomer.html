@@ -1,0 +1,13 @@
+<h2>Add Customer</h2>
+<br /><br />
+<form class="form">
+    <label for="name">Name</label>
+    <input type="text" id="name" ng-model="customer.name">
+    <br />
+    <br />
+    <label for="city">City</label>
+    <input type="text" id="city" ng-model="customer.city">
+    <br />
+    <br />
+    <button type="submit" ng-click="addCustomer(customer)" value="submit">Submit</button>
+</form>
