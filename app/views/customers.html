@@ -1,4 +1,4 @@
-<h2>{{ appSettings.title }}</h2>
+<h2>Customers List</h2>
 <br /> Filter: <input type="text" ng-model="customerFilter.name" />
 <br /><br />
 <table class="table table-striped">
@@ -11,7 +11,7 @@
         <th>&nbsp;</th>
     </tr>
     <tr ng-repeat="cust in customers | filter:customerFilter | orderBy:sortBy:reverse" class="repeat-animation">
-        <td>{{ cust.name }}</td>
+        <td><a href="#/customer/{{cust.id}}">{{ cust.name }}</a></td>
         <td>{{ cust.city }}</td>
         <td>{{ cust.orderTotal | currency }}</td>
         <td>{{ cust.joined | date }}</td>

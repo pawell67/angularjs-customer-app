@@ -5,6 +5,7 @@
         $scope.customer = null;
 
         function init() {
+            $("#success-alert").hide();
             customersFactory.getCustomer(customerId)
                 .success(function(customer) {
                     $scope.customer = customer;
@@ -14,6 +15,22 @@
                 });
         }
 
+        $scope.updateCustomer = function(customer) {
+            customersFactory.updateCustomer(customer).then(function(response) {
+                    var status = response.data;
+                    if (status) {
+                        $("#success-alert").fadeTo(2000, 500).fadeIn(500, function() {
+                            $("#success-alert").slideUp(500);
+                        });
+                    } else {
+                        $window.alert('Unable to update customer');
+                    }
+                }, function(data, status, headers, config) {
+                    $log.log(data.error + ' ' + status);
+                }
+
+            );
+        }
         init();
     };
 

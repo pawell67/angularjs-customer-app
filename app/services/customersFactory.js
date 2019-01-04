@@ -23,6 +23,10 @@
             return $http({ url: '/addCustomer', params: { name: customer.name, city: customer.city }, method: 'POST' });
         };
 
+        factory.updateCustomer = function(customer) {
+            return $http({ url: '/customers/' + customer.id, params: { customer: customer }, method: 'PUT' });
+        }
+
         return factory;
     };
 

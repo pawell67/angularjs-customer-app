@@ -71,6 +71,18 @@ app.post('/addCustomer', function(req, res) {
     res.json(customers);
 });
 
+app.put('/customers/:id', function(req, res) {
+    var customer = JSON.parse(req.query.customer);
+    console.log(customer.name, customer.city)
+    for (var i = 0; i < customers.length; i++) {
+        if (customer.id === customers[i].id) {
+            customers[i].name = customer.name;
+            customers[i].city = customer.city;
+        }
+    }
+    res.json(customers)
+});
+
 app.listen(8080);
 
 console.log('Express listening on port 8080');
