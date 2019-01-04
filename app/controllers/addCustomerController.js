@@ -8,12 +8,6 @@
             customersFactory.addCustomer(customer).then(function(response) {
                     var status = response.data;
                     if (status) {
-                        // for (var i=0,len=$scope.customers.length;i<len;i++) {
-                        //     if ($scope.customers[i].id === customerId) {
-                        //        $scope.customers.splice(i,1);
-                        //        break;
-                        //     }
-                        // }  
                         $log.log('Customer added');
                     } else {
                         $window.alert('Unable to add customer');

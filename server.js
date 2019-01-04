@@ -48,7 +48,7 @@ app.post('/addCustomer', function(req, res) {
     var request = req.query;
     var customerName = request.name;
     var customerCity = request.city;
-    var len = customers.length;
+    var id = customers.length + 1;
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
@@ -60,19 +60,15 @@ app.post('/addCustomer', function(req, res) {
         day = '0' + day;
     }
     customers.push({
-        id: len,
+        id: id,
         joined: `${year}-${month}-${day}`,
         name: customerName,
         city: customerCity,
-        orders: [{
-                id: null,
-                product: '',
-                total: 0
-            }
-
-        ]
+        orderTotal: 0,
+        orders: []
 
     })
+    res.json(customers);
 });
 
 app.listen(8080);
