@@ -1,18 +1,19 @@
 (function() {
 
-    var AddCustomerController = function($scope, $log, customersFactory) {
-
-
+    var AddCustomerController = function($scope, $log, $window, customersFactory) {
+        $("#success-alert").hide();
         $scope.addCustomer = function(customer) {
-            $log.log(customer);
             customersFactory.addCustomer(customer).then(function(response) {
                     var status = response.data;
                     if (status) {
-                        $log.log('Customer added');
+                        $("#success-alert").fadeTo(2000, 500).fadeIn(500, function() {
+                            $("#success-alert").slideUp(500);
+                        });
                     } else {
                         $window.alert('Unable to add customer');
                     }
-
+                    customer.name = '';
+                    customer.city = '';
                 }, function(data, status, headers, config) {
                     $log.log(data.error + ' ' + status);
                 }
@@ -21,7 +22,7 @@
         }
     };
 
-    AddCustomerController.$inject = ['$scope', '$log', 'customersFactory'];
+    AddCustomerController.$inject = ['$scope', '$log', '$window', 'customersFactory'];
 
     angular.module('customersApp')
         .controller('AddCustomerController', AddCustomerController);

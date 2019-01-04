@@ -1,0 +1,25 @@
+{
+    "name": "angularjs-customer-app",
+    "version": "1.0.1",
+    "description": "customer application",
+    "main": "server.js",
+    "dependencies": {
+        "bootstrap": "^4.2.1",
+        "express": "^4.16.4",
+        "jquery": "^3.3.1"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pawell67/angularjs-customer-app.git"
+    },
+    "author": "Paweł Wankiewicz",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/pawell67/angularjs-customer-app/issues"
+    },
+    "homepage": "https://github.com/pawell67/angularjs-customer-app#readme"
+}

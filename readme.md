@@ -2,6 +2,6 @@ Application for maintaining cutomers and orders
 
 # How to run
 
-node server.js
+npm start
 
 In browser localhost:8080
