@@ -15,4 +15,7 @@
     </div>
 
     <button class="btn {{customer.name.length>0&&customer.city.length>0?'btn-primary':'btn-secondary disabled'}}" type="submit" ng-click="updateCustomer(customer)" value="submit">Update</button>
+    <a href="#/customer/{{customer.id}}/addOrder">
+        <button class="btn btn-success">Add Order</button>
+    </a>
 </form>

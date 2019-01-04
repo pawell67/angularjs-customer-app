@@ -71,9 +71,25 @@ app.post('/addCustomer', function(req, res) {
     res.json(customers);
 });
 
+app.post('/customer/:customerId/addOrder', function(req, res) {
+    var request = req.query;
+    var product = request.product;
+    var total = parseFloat(request.price);
+    var customerId = parseInt(req.params.customerId);
+    for (var i = 0; i < customers.length; i++) {
+        if (customerId === customers[i].id) {
+            customers[i].orders.push({
+                id: null,
+                product: product,
+                total: total
+            })
+        }
+    }
+    res.json(customers);
+});
+
 app.put('/customers/:id', function(req, res) {
     var customer = JSON.parse(req.query.customer);
-    console.log(customer.name, customer.city)
     for (var i = 0; i < customers.length; i++) {
         if (customer.id === customers[i].id) {
             customers[i].name = customer.name;

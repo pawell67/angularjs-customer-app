@@ -3,9 +3,14 @@
     var OrdersController = function($scope, $log, $routeParams, customersFactory) {
         var customerId = $routeParams.customerId;
         $scope.customer = null;
+        $scope.order = {
+            product: null,
+            total: null
+        };
 
         function init() {
             $("#success-alert").hide();
+            $("#success-alert-addOrder").hide();
             customersFactory.getCustomer(customerId)
                 .success(function(customer) {
                     $scope.customer = customer;
@@ -30,6 +35,25 @@
                 }
 
             );
+        }
+
+        $scope.addOrder = function(order) {
+            customersFactory.addOrder(order, customerId)
+                .then(function(response) {
+                        var status = response.data;
+                        if (status) {
+                            $("#success-alert-addOrder").fadeTo(2000, 500).fadeIn(500, function() {
+                                $("#success-alert-addOrder").slideUp(500);
+                            });
+                        } else {
+                            $window.alert('Unable to add order');
+                        }
+                    }, function(data, status, headers, config) {
+                        $log.log(data.error + ' ' + status);
+                    }
+
+                );
+
         }
         init();
     };
