@@ -14,7 +14,7 @@
                 templateUrl: 'app/views/orders.html'
             })
             .when('/orders', {
-                controller: 'AllOrdersController',
+                controller: 'OrdersController',
                 templateUrl: 'app/views/allorders.html'
             })
             .when('/addCustomer', {

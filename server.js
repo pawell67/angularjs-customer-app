@@ -99,6 +99,20 @@ app.put('/customers/:id', function(req, res) {
     res.json(customers)
 });
 
+app.delete('/orders/:id', function(req, res) {
+    var orderId = parseInt(req.params.id);
+    var data = { status: true };
+    for (var i = 0; i < customers.length; i++) {
+        var orders = customers[i].orders;
+        for (var j = 0; j < orders.length; j++) {
+            if (orderId === orders[j].id) {
+                orders.splice(j, 1);
+            }
+        }
+    }
+    res.json(data);
+});
+
 app.listen(8080);
 
 console.log('Express listening on port 8080');

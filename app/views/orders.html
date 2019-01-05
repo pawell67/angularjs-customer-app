@@ -4,9 +4,11 @@
     <tr>
         <th>Product</th>
         <th>Total</th>
+        <th>&nbsp;</th>
     </tr>
     <tr ng-repeat="order in customer.orders" class="repeat-animation">
         <td>{{ order.product }}</td>
         <td>{{ order.total | currency }}</td>
+        <td class="center"><span class="glyphicon glyphicon-remove delete" ng-click="deleteOrder(order.id)"></span></td>
     </tr>
 </table>
