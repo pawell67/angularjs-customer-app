@@ -79,7 +79,7 @@ app.post('/customer/:customerId/addOrder', function(req, res) {
     for (var i = 0; i < customers.length; i++) {
         if (customerId === customers[i].id) {
             customers[i].orders.push({
-                id: null,
+                id: getNewId(customers),
                 product: product,
                 total: total
             })
@@ -103,6 +103,18 @@ app.listen(8080);
 
 console.log('Express listening on port 8080');
 
+function getNewId(customers) {
+    var id = 0;
+    for (var i = 0; i < customers.length; i++) {
+        var orders = customers[i].orders;
+        for (var j = 0; j < orders.length; j++) {
+            if (orders[j].id > id) {
+                id = orders[j].id;
+            }
+        }
+    }
+    return ++id;
+}
 var customers = [{
         id: 1,
         joined: '2000-12-02',
