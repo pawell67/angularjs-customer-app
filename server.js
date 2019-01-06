@@ -1,4 +1,5 @@
 var express = require('express'),
+    opn = require('opn'),
     app = express();
 
 app.use(express.static(__dirname + '/'));
@@ -184,3 +185,5 @@ var customers = [{
         }]
     }
 ];
+
+opn('http://localhost:8080');
