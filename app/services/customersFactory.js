@@ -27,14 +27,6 @@
             return $http({ url: '/customers/' + customer.id, params: { customer: customer }, method: 'PUT' });
         }
 
-        factory.addOrder = function(order, customerId) {
-            return $http({ url: 'customer/' + customerId + '/addOrder', params: { product: order.product, price: order.total }, method: 'POST' });
-        }
-
-        factory.deleteOrder = function(orderId) {
-            return $http.delete('/orders/' + orderId);
-        }
-
         return factory;
     };
 

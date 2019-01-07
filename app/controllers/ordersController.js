@@ -1,6 +1,6 @@
 (function() {
 
-    var OrdersController = function($scope, $log, $location, $routeParams, customersFactory) {
+    var OrdersController = function($scope, $log, $location, $routeParams, customersFactory, ordersFactory) {
         var customerId = $routeParams.customerId;
         $scope.customer = null;
         $scope.order = {
@@ -61,7 +61,7 @@
         }
 
         $scope.addOrder = function(order) {
-            customersFactory.addOrder(order, customerId)
+            ordersFactory.addOrder(order, customerId)
                 .then(function(response) {
                     var status = response.data;
                     if (status) {
@@ -77,7 +77,7 @@
         }
 
         $scope.deleteOrder = function(orderId) {
-            customersFactory.deleteOrder(orderId)
+            ordersFactory.deleteOrder(orderId)
                 .then(function(response) {
                         var status = response.data;
                         if (status) {
@@ -106,7 +106,7 @@
         init();
     };
 
-    OrdersController.$inject = ['$scope', '$log', '$location', '$routeParams', 'customersFactory'];
+    OrdersController.$inject = ['$scope', '$log', '$location', '$routeParams', 'customersFactory', 'ordersFactory'];
 
     angular.module('customersApp')
         .controller('OrdersController', OrdersController);
